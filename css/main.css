@@ -38,6 +38,9 @@ a[ng-click]{
     cursor: pointer;
 }
 
+.well blockquote{
+    background-color: white;
+}
 
 
 

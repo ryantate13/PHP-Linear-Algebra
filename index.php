@@ -94,10 +94,14 @@ else{
                         <fieldset>
                             <legend>Function {{funcKey}}<span class="pull-right"><a ng-click="rmFunction(funcKey)" href="#"><i class="fa fa-times"></i></a></span></legend>
                             <div class="form-group">
-                                <select class="form-control" name="selectedFunction" id="selectedFunction" ng-model="funcValue.data.func" ng-change="funcValue.data.args = functionMap[funcValue.data.func].args">
+                                <select class="form-control" name="selectedFunction" id="selectedFunction" ng-model="funcValue.data.func" ng-change="funcValue.data.args = functionMap[funcValue.data.func].args; funcValue.data.description = functionMap[funcValue.data.func].description;">
                                     <option ng-repeat="(cppFuncKey, cppFuncValue) in functionMap" value="{{cppFuncKey}}">{{cppFuncKey}}</option>
                                 </select>
                             </div>
+
+                            <blockquote ng-if="funcValue.data.description">
+                                {{funcValue.data.description | capitalize}}
+                            </blockquote>
 
                             <div class="panel panel-danger" ng-if="funcValue.error">
                                 <div class="panel-heading">
@@ -120,7 +124,7 @@ else{
                                     <div class="col-xs-12" ng-if= "innerArgKey == 'scalar'">
                                         <label for="{{innerArgKey}}" class="col-lg-2 control-label">{{innerArgKey}}</label>
                                         <div class="col-lg-10">
-                                            <input type="text" step="0.00001" ng-model="funcValue.data.args[argKey][innerArgKey]" class="form-control" placeholder="{{innerArgValue}}">
+                                            <input type="text" style="margin-bottom:1em;" ng-model="funcValue.data.args[argKey][innerArgKey]" class="form-control" placeholder="{{innerArgValue}}">
                                         </div>
                                     </div>
                                     <div class="col-xs-12" ng-if= "innerArgKey == 'bool'">
