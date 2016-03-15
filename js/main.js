@@ -221,7 +221,7 @@ app.controller('funcs', function($scope, $http) {
             ],
             'description': 'check whether a matrix is jagged'
         },
-        'HamiltonianCircuit' : {
+        'hamiltonianCircuit' : {
             'args' : [
                 {'matrix': 'Matrix'}
             ],
