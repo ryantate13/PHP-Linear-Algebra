@@ -1,39 +1,40 @@
 <?php
+// start local server: php -S localhost:8000
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$input = file_get_contents('php://input');
-	$inputData = json_decode($input);
+  $input = file_get_contents('php://input');
+  $inputData = json_decode($input);
 
-	$binary = './graph-theory';
+  $binary = './graph_theory';
 
-	$cmd = $binary . ' ' . $inputData->func . ' ';
+  $cmd = $binary . ' ' . $inputData->func . ' ';
 
-	foreach ($inputData->args as $arg) {
-        foreach ($arg as $key => $val) {
-            if (strpos($key, '$') === false) {
-                $cmd .= escapeshellarg($val) . ' ';
-            }
-        }
-	}
+  foreach ($inputData->args as $arg) {
+    foreach ($arg as $key => $val) {
+      if (strpos($key, '$') === false) {
+        $cmd .= escapeshellarg($val) . ' ';
+      }
+    }
+  }
 
-    $escaped = escapeshellcmd($cmd);
+  $escaped = escapeshellcmd($cmd);
 
-	$output = `$escaped`;
+  $output = `$escaped`;
 
-    $response = new stdClass();
+  $response = new stdClass();
 
-	if (strpos($output, 'error') !== false) {
-		$response->error = $output;
-	}
-	else {
-		$response->output = $output;
-	}
+  if (strpos($output, 'error') !== false) {
+    $response->error = $output;
+  }
+  else {
+    $response->output = $output;
+  }
 
-	header('Content-Type: application/json');
+  header('Content-Type: application/json');
 
-	echo json_encode($response);
+  echo json_encode($response);
 
-    exit;
+  exit;
 }
 else{
 ?><!doctype html>
@@ -42,23 +43,23 @@ else{
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Linear Algebra</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Linear Algebra</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<style>
-		body {
-			padding-top: 50px;
-			padding-bottom: 20px;
-		}
-	</style>
-	<link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+  </style>
+  <link rel="stylesheet" href="css/main.css">
 
-	<script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+  <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <link rel="stylesheet" href="/css/font-awesome.min.css">
 </head>
@@ -67,25 +68,25 @@ else{
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">Linear Algebra</a>
-		</div>
-		<div id="navbar" class="navbar-collapse collapse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Linear Algebra</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
 
-		</div><!--/.navbar-collapse -->
-	</div>
+    </div><!--/.navbar-collapse -->
+  </div>
 </nav>
 
 <div class="functions container" ng-app="linAlg" ng-controller="funcs">
-	<!-- Example row of columns -->
-	<div class="row">
+  <!-- Example row of columns -->
+  <div class="row">
         <div class="col-sm-9" id="funcList">
             <div class="col-sm-6" ng-repeat="(funcKey, funcValue) in functions">
                 <div class="well bs-component">
@@ -162,17 +163,17 @@ else{
             <h3>Last Result <span ng-if="selectedCppName">of {{selectedCppName}}</span></h3>
             <pre>{{lastResponse}}</pre>
         </div>
-	</div>
+  </div>
 
 
 
-	<footer>
+  <footer>
         <div class="row">
             <div class="col-xs-12">
                 <button class="btn btn-primary" style="border-radius: 50%;" ng-click="addFunction()"><a style="color:white;" title="Add Function"><i class="fa fa-plus"></i></a></button>
             </div>
         </div>
-	</footer>
+  </footer>
 </div> <!-- /container -->
 
 <script src="js/vendor/jquery-1.11.2.min.js"></script>

@@ -4,192 +4,228 @@ app.controller('funcs', function($scope, $http) {
         'magnitude' : {
             'args' : [
                 {'vector': 'Vector'}
-            ]
+            ],
+            'description': 'get the magnitude of a vector'
         },
         'dot' : {
             'args' : [
                 {'vector': 'Vector 1'},
                 {'vector': 'Vector 2'}
-            ]
+            ],
+            'description': 'get the dot product of two vectors'
         },
         'scaleVector' : {
             'args' : [
                 {'scalar': 'Scalar'},
                 {'vector': 'Vector'}
-            ]
+            ],
+            'description': 'multiply each element of a vector by a scalar'
         },
         'lower' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the bottom left triangle matrix'
         },
         'upper' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the upper right triangle matrix'
         },
         'column' : {
             'args' : [
                 {'scalar': 'Scalar'},
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the nth column from a matrix'
         },
         'vectorMatrixInnerProduct' : {
             'args' : [
                 {'vector': 'Vector'},
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the inner product of a vector and a matrix'
         },
         'matrixVectorInnerProduct' : {
             'args' : [
                 {'matrix': 'Matrix'},
                 {'vector': 'Vector'}
-            ]
+            ],
+            'description': 'get the inner product of a matrix and a vector'
         },
-        'matrixMatrixInnerProduct' : {
+        'innerProduct' : {
             'args' : [
                 {'matrix': 'Matrix 1'},
                 {'matrix': 'Matrix 2'}
-            ]
+            ],
+            'description': 'get the inner product of two matrices'
         },
         'outerProduct' : {
             'args' : [
                 {'matrix': 'Matrix 1'},
                 {'matrix': 'Matrix 2'}
-            ]
+            ],
+            'description': 'get the outer product of two matrices'
         },
         'diagonal' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the major diagonal of a square matrix'
         },
         'minorDiagonal' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the minor diagonal of a square matrix'
         },
         'trace' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the trace of a square matrix (sum of diagonal)'
         },
         'scaleMatrix' : {
             'args' : [
                 {'scalar': 'Scalar'},
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'multiply each element in a matrix by a scalar'
         },
-        'subtractMatrix' : {
+        'subtract' : {
             'args' : [
                 {'matrix': 'Matrix 1'},
                 {'matrix': 'Matrix 2'}
-            ]
+            ],
+            'description': 'subtract two matrices from each other element wise'
         },
         'transpose' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'flip the rows and columns of a matrix'
         },
         'adjacencyFromLaplacian' : {
             'args' : [
                 {'matrix': 'Laplacian Matrix'}
-            ]
+            ],
+            'description': 'get the adjacency matrix given a laplacian matrix'
         },
         'complement' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the complement of a matrix'
         },
         'degree' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the degree matrix given a adjacency matrix'
         },
-        'laplacianFromAdjacency' : {
+        'laplacian' : {
             'args' : [
                 {'matrix': 'Adjacency Matrix'}
-            ]
-        },
-        'laplacianFromAdjacencyAndDegree' : {
-            'args' : [
-                {'matrix': 'Adjacency Matrix'},
-                {'matrix': 'Degree Matrix'}
-            ]
+            ],
+            'description': 'get the laplacian matrix given a adjacency matrix'
         },
         'incidence' : {
             'args' : [
                 {'matrix': 'Adjacency Matrix'}
-            ]
+            ],
+            'description': 'get the incidence matrix given a adjacency matrix'
         },
         'algebraicConnectivity' : {
             'args' : [
-                {'matrix': 'Matrix'},
-                {'bool': 'Is adjacency?'}
-            ]
+                {'matrix': 'Matrix'}
+            ],
+            'description': 'get the algebraic connectivity given a adjacency matrix'
         },
         'eigenvalues' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the eigenvalues of a matrix'
         },
         'determinant' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the determinant of a matrix'
         },
         'connected' : {
             'args' : [
-                {'matrix': 'Matrix'},
-                {'bool': 'Is adjacency?'}
-            ]
+                {'matrix': 'Matrix'}
+            ],
+            'description': 'given a adjacency matrix, check if the graph is connected'
+        },
+        'hasEulerCircuit' : {
+            'args' : [
+                {'matrix': 'Adjacency Matrix'}
+            ],
+            'description': 'given a adjacency matrix, check if euler circuit exists'
         },
         'eulerCircuit' : {
             'args' : [
                 {'matrix': 'Adjacency Matrix'}
-            ]
+            ],
+            'description': 'given a adjacency matrix, find the euler circuit'
         },
         'minimalSpanningTree' : {
             'args' : [
                 {'matrix': 'Adjacency Matrix'}
-            ]
+            ],
+            'description': 'given a adjacency matrix, get the adjacency matrix of minimal spanning tree. sum the upper matrix to get the cost of traversal'
         },
         'spectralGap' : {
             'args' : [
-                {'matrix': 'Matrix'},
-                {'bool': 'Is adjacency?'}
-            ]
+                {'matrix': 'Matrix'}
+            ],
+            'description': 'get the spectral gap given a adjacency matrix'
         },
         'spectralRadius' : {
             'args' : [
-                {'matrix': 'Matrix'},
-                {'bool': 'Is adjacency?'}
-            ]
+                {'matrix': 'Matrix'}
+            ],
+            'description': 'get the spectral radius given a adjacency matrix'
         },
         'connectedComponents' : {
             'args' : [
                 {'matrix': 'Matrix'},
                 {'bool': 'Is adjacency?'}
-            ]
+            ],
+            'description': 'get the number of connected components given a adjacency matrix'
+        },
+        'numSpanningTrees' : {
+            'args' : [
+                {'matrix': 'Matrix'}
+            ],
+            'description': 'get the number of spanning trees given an adjacency matrix'
         },
         'isSymmetric' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'check whether a matrix is symmetric'
         },
         'isSquare' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'check whether a matrix is square'
         },
         'isJagged' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'check whether a matrix is jagged'
         },
         'HamiltonianCircuit' : {
             'args' : [
                 {'matrix': 'Matrix'}
-            ]
+            ],
+            'description': 'get the hamiltonian circuit given a adjacency matrix'
         }
 
     };
